@@ -1,0 +1,88 @@
+<div class="main-update">
+  <ul class="sidebar-update">
+    <li>
+      <%= link_to 'Chỉnh sửa trang cá nhân', edit_user_path(@user), class: 'active' %>
+    </li>
+    <li>
+      <a class="inactive" href="/users/edit">Đổi mật khẩu</a>
+    </li>
+  </ul>
+
+  <div class="content-update">
+    <%= form_for @user do |f| %>
+    <div class="person-info row">
+      <div class="col-md-3">
+      <%= f.label :avatar %>
+      </div>
+      <div class="col-md-9">
+        <%= image_tag @user.avatar_url, class: "update-avatar hidden" if @user.avatar? %>
+        <%= image_tag @user.avatar.default_url, class: "update-avatar update-avatar-default hidden" %>
+        <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",
+            class: "file-loading", id: "avatar-2" %>
+        <%= f.hidden_field :status_img, value: 0, class: "status-img" %>
+        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+      </div>
+    </div>
+
+    <div class="person-info row">
+      <div class="col-md-3"><%= f.label :email %></div>
+      <div class="col-md-9"><%= f.email_field :email, class: "form-control", disabled: true %></div>
+    </div>
+
+    <div class="person-info row">
+      <div class="col-md-3"><%= f.label :name %></div>
+      <div class="col-md-9">
+        <%= f.text_field :name, class: "form-control" %>
+        <%= genError @user, :name %>
+      </div>
+    </div>
+
+    <div class="person-info row">
+      <div class="col-md-3"><%= f.label :date_of_birth %></div>
+      <div class="col-md-9"><%= f.date_field :dob, class: "form-control" %></div>
+    </div>
+
+    <div class="person-info row">
+      <div class="col-md-3"><%= f.label :phone_number %></div>
+      <div class="col-md-9"><%= f.number_field :phonenumber, class: "form-control"  %></div>
+    </div>
+
+    <div class="person-info row">
+      <div class="col-md-3"><%= f.label :gender %></div>
+      <div class="col-md-9"><%= f.select :gender, User.genders.keys, {}, class: "form-control" %></div>
+    </div>
+
+    <div class="col-md-9 col-md-offset-3"><%= f.submit "Save", class: "btn btn-primary update-btn" %></div>
+  <% end %>
+  </div>
+
+  <div class="clearfix"></div>
+</div>
+
+<script>
+
+  var srcava = $('.update-avatar').attr('src');
+
+  $(document).on('click', '.fileinput-remove', function () {
+      srcava1 = $('.update-avatar-default').attr('src');
+      $('.file-default-preview img').attr('src', srcava1);
+      $('.status-img').val('1');
+  });
+
+  $("#avatar-2").fileinput({
+      overwriteInitial: true,
+      maxFileSize: 1500,
+      showClose: false,
+      showCaption: false,
+      showBrowse: false,
+      browseOnZoneClick: true,
+      removeLabel: '',
+      removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+      removeTitle: 'Cancel or reset changes',
+      elErrorContainer: '#kv-avatar-errors-2',
+      msgErrorClass: 'alert alert-block alert-danger',
+      defaultPreviewContent: '<img src='+ srcava +' alt="Your Avatar" style="width:160px"><h6 class="text-muted">Click to select</h6>',
+      layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
+      allowedFileExtensions: ["jpg", "png", "gif"]
+  });
+</script>

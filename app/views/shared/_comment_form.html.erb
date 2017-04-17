@@ -1,0 +1,12 @@
+<%= form_for @comment ||= Comment.new,
+  html: { multipart: true, class: "form-horizontal" }, remote: true do |f| %>
+  <div class="hidden">
+   <%= f.hidden_field :food_id, value: food.id %>
+   <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="comment-input-form">
+  <%= f.text_field :content, placeholder: "Thêm bình luận…",
+    class: "comment_field",id: "comment_content_#{food.id}" %>
+  </div>
+<% end %>

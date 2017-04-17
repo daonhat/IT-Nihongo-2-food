@@ -1,0 +1,18 @@
+<%= form_for comment, html: {class: "edit-comment hidden", id: "comment-form-#{comment.id}"},
+  remote: true do |f| %>
+  <%= f.text_field :content, class: "form-control", id: "comment-content-#{comment.id}"  %>
+  <script>
+    $(document).ready(function(){
+      $("#comment-content-<%= comment.id %>").keypress(function(e){
+        console.log(e.which);
+        if(e.which == 13){
+          if(confirm("Are you sure?")){
+
+          }else{
+            e.preventDefault();
+          }
+        }
+      });
+    });
+  </script>
+<% end %>

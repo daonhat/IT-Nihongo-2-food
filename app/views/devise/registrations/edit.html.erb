@@ -1,0 +1,55 @@
+<div class="main-update">
+  <ul class="sidebar-update">
+    <li>
+      <%= link_to 'Chỉnh sửa trang cá nhân', edit_user_path(@user), class: 'inactive' %>
+    </li>
+    <li>
+      <a class="active" href="/users/edit">Đổi mật khẩu</a>
+    </li>
+  </ul>
+
+  <div class="content-update">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%#= devise_error_messages! %>
+
+      <div class="person-info row per-ava">
+        <div class="col-md-3">
+          <% if @user.avatar? %>
+            <%= image_tag @user.avatar_url, class: "img-ava-mini" %>
+          <% else %>
+            <%= image_tag @user.avatar.default_url, class: "img-ava-mini" %>
+          <% end %>
+          </div>
+        <div class="col-md-9 change-pass"><h2><%= @user.name %></h2></div>
+      </div>
+
+      <div class="person-info row">
+        <div class="col-md-3"><%= f.label :password %></div>
+        <div class="col-md-9 change-pass">
+          <%= f.password_field :password, autocomplete: "off" %>
+          <%= genError @user, :password %>
+        </div>
+      </div>
+
+      <div class="person-info row">
+        <div class="col-md-3"><%= f.label :password_confirmation %></div>
+        <div class="col-md-9 change-pass">
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          <%= genError @user, :password_confirmation %>
+        </div>
+      </div>
+
+      <div class="person-info row">
+        <div class="col-md-3"><%= f.label :current_password %></div>
+        <div class="col-md-9 change-pass">
+          <%= f.password_field :current_password, autocomplete: "off" %>
+          <%= genError @user, :current_password %>
+        </div>
+      </div>
+
+      <div class="col-md-9 col-md-offset-3"><%= f.submit "Update", class: "btn btn-primary update-btn" %></div>
+    <% end %>
+  </div>
+
+  <div class="clearfix"></div>
+</div>

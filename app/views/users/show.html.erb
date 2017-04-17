@@ -1,0 +1,36 @@
+<div class="posts-wrapper">
+  <div class="row profile-header">
+    <div class="col-md-6">
+      <div class="img-circle">
+        <%= image_tag @user.avatar_url, id: "image-preview",
+         class: "img-responsive img-circle profile-image"  if @user.avatar? %>
+        <%= image_tag @user.avatar.default_url, id: "image-preview", class: "img-responsive img-circle profile-image" unless @user.avatar? %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="user-name-and-follow">
+        <h3 class="profile-user-name">
+          <%= @user.name.present? ? @user.name : trim_string(@user.email, 15, '...') %>
+        </h3>
+        <span>
+          <% if @user == current_user %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn edit-button' %>
+          <% end %>
+        </span>
+
+        <span class="show-follow-form"><%= render "follow_form" if user_signed_in? %></span>
+
+        <span><%= render 'shared/stats' %></span>
+      </div>
+      <p class="profile-bio">
+        <%= @user.email %>
+      </p>
+      <div class="user-statistics">
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# @foods.each do |food| %>
+  <%#= render 'foods/food', food: food %>
+<%# end %>

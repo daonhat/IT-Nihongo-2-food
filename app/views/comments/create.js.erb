@@ -1,0 +1,3 @@
+$('#comments-of-phone-<%= @food.id %>').append("<%=j render 'comments/comment',food: @food, comment: @comment %>");
+$('#comment_content_<%= @food.id %>').val('')
+$('.dn-count b').text("<%= @food.comments.count %> binh luan");

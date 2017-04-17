@@ -1,0 +1,40 @@
+<div class="posts-wrapper">
+  <div class="post">
+    <div class="post-head">
+      <div class="thumb-img"></div>
+      <div class="user-name">
+        <%= link_to food.user.name, user_path(food.user) %>
+      </div>
+      <div class="time-ago">
+        <%= time_ago_in_words food.created_at %>
+      </div>
+    </div>
+
+    <div class="image center-block">
+      <%= link_to image_tag(food.picture_url, class: "img-responsive"), food_path(food) %>
+    </div>
+
+    <div class="post-bottom">
+      <%#= render 'posts/likes', post: post %>
+      <div class="caption">
+        <div class="caption-content">
+          <div class="user-name">
+            <%= link_to food.user.name, user_path(food.user) %>
+          </div>
+          <%= food.name %>
+      </div>
+
+      <div id="comments-of-phone-<%= food.id %>" class="comments-list">
+        <%= render food.comments if food.comments.any? %>
+        <%#= paginate @comments, theme: "twitter-bootstrap-3" %>
+      </div>
+
+      <% if user_signed_in? %>
+        <div class="dn-cmt-form">
+          <%= render "shared/comment_form", food: food %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
