@@ -22,7 +22,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.integer  :gender
       t.string   :phonenumber
       t.string   :name
-
+      t.string   :provider
+      t.string   :uid
 
       ## Confirmable
       # t.string   :confirmation_token

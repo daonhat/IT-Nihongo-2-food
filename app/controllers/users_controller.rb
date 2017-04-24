@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :owned_profile, only: [:edit, :update]
 
   def show
-
+    @foods = @user.foods
   end
 
   def edit

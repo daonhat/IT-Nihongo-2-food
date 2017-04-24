@@ -10,7 +10,7 @@
     <div class="col-md-6">
       <div class="user-name-and-follow">
         <h3 class="profile-user-name">
-          <%= @user.name.present? ? @user.name : trim_string(@user.email, 15, '...') %>
+          <%= @user.name.present? ? trim_string(@user.name,10,'...') : trim_string(@user.email, 10, '...') %>
         </h3>
         <span>
           <% if @user == current_user %>
@@ -34,3 +34,30 @@
 <%# @foods.each do |food| %>
   <%#= render 'foods/food', food: food %>
 <%# end %>
+
+
+<div class="posts-wrapper1">
+  <div class="tab_img">
+    <% @foods.each do |food|%>
+      <div class="col-md-4 portfolio-grids">
+        <div class="grid">
+          <%= link_to food.picture_url, class: "swipebox",
+            title: "#{link_to "Go to detail image", food_path(food), class: "img-responsive"}" do %>
+            <%= image_tag food.picture_url, class: "img-responsive" %>
+            <div class="figcaption">
+              <h3><%= trim_string(food.name, 15, '...') %></h3>
+              <p><%= trim_string(food.caption, 30, '...') %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    jQuery(function($) {
+      $(".swipebox").swipebox();
+    });
+</script>

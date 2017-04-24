@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20170405100252) do
     t.integer  "gender"
     t.string   "phonenumber"
     t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "avatar"

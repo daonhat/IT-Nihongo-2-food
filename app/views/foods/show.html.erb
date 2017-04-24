@@ -1,1 +1,5 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %> posts-wrapper"><%= message %></div>
+<% end %>
+<% flash.clear %>
 <%= render 'food', food: @food %>

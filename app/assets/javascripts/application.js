@@ -22,3 +22,11 @@
 $(document).on('click', '.glyphicon-pencil', function(event) {
   $(this).closest('div').toggleClass('open');
 })
+
+$(document).on('ready', function() {
+  set_timetout();
+});
+
+function set_timetout() {
+  $('.alert').delay(3000).slideUp();
+}

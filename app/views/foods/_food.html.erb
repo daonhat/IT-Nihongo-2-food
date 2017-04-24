@@ -3,8 +3,24 @@
     <div class="post-head">
       <div class="thumb-img"></div>
       <div class="user-name">
-        <%= link_to food.user.name, user_path(food.user) %>
+        <%= link_to food.user.name.present? ? food.user.name : food.user.email, user_path(food.user) %>
       </div>
+
+      <% if current_user? food.user %>
+        <div class="food-action">
+          <span class="glyphicon glyphicon-pencil pencil-food"
+            aria-hidden="true" data-cmt="<%= food.id %>"></span>
+
+          <div class="content-action content-action-<%= food.id %>">
+            <ul>
+              <li><%= link_to "Edit...", edit_food_path(food) %></li>
+              <li><%= link_to "Delete...", food, method: :delete,
+                data: {confirm: "Are you sure?"} %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+
       <div class="time-ago">
         <%= time_ago_in_words food.created_at %>
       </div>
@@ -19,7 +35,7 @@
       <div class="caption">
         <div class="caption-content">
           <div class="user-name">
-            <%= link_to food.user.name, user_path(food.user) %>
+            <%= link_to food.user.name.present? ? food.user.name : food.user.email, user_path(food.user) %>
           </div>
           <%= food.name %>
       </div>
