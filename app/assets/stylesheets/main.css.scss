@@ -2,6 +2,10 @@
 @import "bootstrap";
 @import "reg";
 @import "fileinput";
+@import "form/form-register";
+@import "form/form-login";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 html {
   height: 100%;
@@ -94,9 +98,6 @@ body {
     font-weight: 500;
     color: #125688;
     font-size: 15px;
-  }
-  .user-name, .caption-content {
-    display: inline;
   }
   #comment {
     margin-top: 7px;
@@ -724,4 +725,27 @@ body {
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 3px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+}
+
+.field_with_errors{
+  display: inline-block;
+}
+
+.container-fluid .field_with_errors{
+  display: block;
+}
+
+.fa-5{
+  font-size: 22px;
+}
+
+.navbar-container{
+  max-width: 900px;
+}
+
+.caption-content{
+  margin: 20px 0;
+  ul li{
+    list-style: none;
+  }
 }

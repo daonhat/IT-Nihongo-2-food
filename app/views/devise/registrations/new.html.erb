@@ -1,0 +1,61 @@
+<%= form_for resource, as: resource_name,
+  url: registration_path(resource), html: {class: "form-register" } do |f| %>
+
+  <div class="form-register-with-email">
+      <div class="form-white-background">
+
+          <div class="form-title-row">
+              <h1>Create an account</h1>
+          </div>
+
+          <div class="form-row ">
+              <label class="">
+                  <span>Email</span>
+                  <%= f.email_field :email, autofocus: true, required: true %>
+                  <%= genError @user, :email %>
+              </label>
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <span>Password</span>
+                  <%= f.password_field :password, autocomplete: "off", required: true %>
+                  <%= genError @user, :password %>
+              </label>
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <span>Password confirmation</span>
+                  <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
+                  <%= genError @user, :password_confirmation %>
+              </label>
+          </div>
+
+          <div class="form-row">
+              <button type="submit">Register</button>
+          </div>
+
+      </div>
+
+      <a href="sign_in" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+
+  </div>
+
+  <div class="form-sign-in-with-social">
+
+      <div class="form-row form-title-row">
+          <span class="form-title">Sign in with</span>
+      </div>
+
+      <%= link_to user_facebook_omniauth_authorize_path, class: "form-facebook-button" do %>
+        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+        <strong>FaceBook</strong>
+      <% end %>
+      <%= link_to user_github_omniauth_authorize_path, class: "form-twitter-button" do %>
+        <i class="fa fa-github-square" aria-hidden="true"></i>
+        <strong>Github</strong>
+      <% end %>
+
+  </div>
+<% end %>

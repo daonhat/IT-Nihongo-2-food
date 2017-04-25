@@ -1,82 +1,62 @@
-<div class="cotn_principal">
-  <div class="cont_centrar">
-    <div class="cont_login">
-      <div class="cont_info_log_sign_up">
-        <div class="col_md_login">
-          <div class="cont_ba_opcitiy text-center">
-            <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "form-facebook-button" %>
-            <h2>LOGIN</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
-          </div>
-        </div>
-        <div class="col_md_sign_up">
-          <div class="cont_ba_opcitiy text-center">
-            <h2>SIGN UP</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
-          </div>
-        </div>
-      </div>
+<%= form_for resource, as: resource_name,
+  url: session_path(resource_name), html: {class: "form-login"} do |f| %>
 
+    <div class="form-log-in-with-email">
 
-      <div class="cont_back_info">
-         <div class="cont_img_back_grey">
-          <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
-         </div>
-      </div>
-      <div class="cont_forms" >
-        <div class="cont_img_back_">
-         <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+      <div class="form-white-background">
+
+        <div class="form-title-row">
+          <h1>Log in</h1>
         </div>
-        <div class="cont_form_login text-center">
-          <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
-          <% flash.each do |message_type, message| %>
+        <% flash.each do |message_type, message| %>
             <div class="alert alert-<%= message_type %> login-mes-err"><%= message %></div>
           <% end %>
-          <h2>LOGIN</h2>
-          <%= form_for @user ||= User.new, url: session_path(@user) do |f| %>
-              <%= f.email_field :email, placeholder: "Email" %>
-              <%= f.password_field :password, placeholder: "Password" %>
-            <% if devise_mapping.rememberable? -%>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
-            <% end %>
-            <button class="btn_login" type="submit" onclick="cambiar_login()">LOGIN</button>
-          <% end %>
+        <div class="form-row">
+          <label>
+            <span>Email</span>
+            <%= f.email_field :email, autofocus: true, required: true %>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            <span>Password</span>
+              <%= f.password_field :password, autocomplete: "off", required: true %>
+          </label>
         </div>
 
-        <div class="cont_form_sign_up text-center">
-          <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-          <h2>SIGN UP</h2>
-          <%= form_for(@user_sign_up ||= User.new, url: registration_path(@user_sign_up)) do |f| %>
-
-            <%= f.email_field :email, placeholder: "Email" %>
-            <div style="margin-left: 11%;"><%= genError @user_sign_up, :email %></div>
-
-            <%= f.password_field :password, placeholder: "Password" %>
-            <div style="margin-left: 11%;"><%= genError @user_sign_up, :password %></div>
-
-            <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
-            <div style="margin-left: 11%;"><%= genError @user_sign_up, :password_confirmation %></div>
-            <button class="btn_sign_up" type="submit" onclick="cambiar_sign_up()">SIGN UP</button>
-          <% end %>
+        <div class="form-row">
+          <label class="form-checkbox">
+            <%= f.check_box :remember_me %>
+            <span class="remember"><b>Remember me</span>
+          </label>
         </div>
+
+        <div class="form-row">
+          <button type="submit">Log in</button>
+        </div>
+
       </div>
+
+        <%= link_to "Create an account", new_registration_path(resource_name),
+          class: "form-create-an-account" %>
+
     </div>
- </div>
-</div>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    if($('.alert').hasClass('alert-alert')){
-      cambiar_login();
-    };
+    <div class="form-sign-in-with-social">
 
-    if($('.help-block').hasClass('help-block-error')){
-      cambiar_sign_up();
-    }
-  });
-</script>
+      <div class="form-row form-title-row">
+        <span class="form-title">Sign in with</span>
+      </div>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "form-facebook-button" do %>
+        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+        <strong>FaceBook</strong>
+      <% end %>
+      <%= link_to user_github_omniauth_authorize_path, class: "form-twitter-button" do %>
+        <i class="fa fa-github-square" aria-hidden="true"></i>
+        <strong>Github</strong>
+      <% end %>
+
+    </div>
+
+<% end %>
+

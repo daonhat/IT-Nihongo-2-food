@@ -7,7 +7,9 @@
         <span class="icon-bar"></span>
       </button>
       <div class="navbar-brand">
-        <%= link_to "Photogram", root_path %>
+        <%= link_to root_path, title: "FoodStagram" do %>
+          <i class="fa fa-picture-o fa-5" aria-hidden="true"></i><strong>  美味しい</strong>
+        <% end %>
       </div>
     </div>
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
@@ -17,10 +19,19 @@
             <%#= render 'notifications/notification_dropdown' %>
           </li>
           <li>
-            <%= link_to "New Post", new_food_path %>
+            <%= link_to new_food_path, class: "abcd", title: "New post" do %>
+              <i class="fa fa-upload fa-5" aria-hidden="true"></i>
+            <% end %>
           </li>
           <li>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <%= link_to user_path(current_user), class: "abcd", title: "Profile" do %>
+              <i class="fa fa-user fa-5" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "abcd", title: "Log out" do %>
+              <i class="fa fa-sign-out fa-5" aria-hidden="true"></i>
+            <% end %>
           </li>
         <% else %>
           <li>

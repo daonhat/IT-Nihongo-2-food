@@ -9,7 +9,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% unless controller_name == "sessions" || (controller_name == "registrations" && controller.action_name == "new") ||
+      (controller_name == "registrations" && controller.action_name == "create") %>
+      <%= render 'layouts/header' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -34,10 +34,12 @@
       <%#= render 'posts/likes', post: post %>
       <div class="caption">
         <div class="caption-content">
-          <div class="user-name">
-            <%= link_to food.user.name.present? ? food.user.name : food.user.email, user_path(food.user) %>
-          </div>
-          <%= food.name %>
+          <ul>
+            <%= "<li><b>Name</b>: #{food.name} </li>".html_safe if food.name.present? %>
+            <%= "<li><b>Address</b>: #{food.address} </li>".html_safe if food.address.present? %>
+            <%= "<li><b>Caption</b>: #{food.caption} </li>".html_safe if food.caption.present? %>
+          </ul>
+
       </div>
 
       <div id="comments-of-phone-<%= food.id %>" class="comments-list">
