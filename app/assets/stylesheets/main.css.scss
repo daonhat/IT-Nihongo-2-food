@@ -766,6 +766,17 @@ body {
   overflow-y: auto;
 }
 
+.ui-autocomplete .ui-menu-item{
+  display: block!important;
+  border-bottom: solid 1px #dbdbdb;
+}
+
+.ui-state-active{
+  border: none!important;
+  background: none!important;
+  color: #999!important;
+}
+
 .ui-autocomplete::before{
   content: "";
   width: 15px;
