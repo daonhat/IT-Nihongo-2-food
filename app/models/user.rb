@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :foods, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
@@ -28,6 +29,11 @@ class User < ApplicationRecord
     following.include? other_user
   end
 
+  def liking? food
+    checkLike = Like.where user: self, food: food
+    checkLike.present? ? true : false
+  end
+
   class << self
     def from_omniauth auth
       find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
@@ -45,6 +51,10 @@ class User < ApplicationRecord
           user.email = data["email"] if user.email.blank?
         end
       end
+    end
+
+    def search term
+      where('LOWER(name) LIKE :term OR LOWER(email) LIKE :term', term: "%#{term.downcase}%")
     end
   end
 end

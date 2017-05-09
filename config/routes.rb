@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :foods
   resources :comments
-  resources :likes
+  resources :likes, only: [:create, :destroy]
   resources :relationships
   resources :users, only: [:show, :edit, :update]
 end

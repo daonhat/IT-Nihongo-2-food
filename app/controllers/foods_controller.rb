@@ -8,6 +8,16 @@ class FoodsController < ApplicationController
 
     @foods = Food.feed(current_user.following_ids, current_user.id)
       .order_by_time
+    if params[:term]
+      @users = User.search(params[:term])
+    else
+      @users = User.all
+    end
+    @user_email = @users.map(&:email)
+    respond_to do |format|
+    format.html
+    format.json { render :json => @users.to_json }
+    end
   end
 
   # GET /foods/1

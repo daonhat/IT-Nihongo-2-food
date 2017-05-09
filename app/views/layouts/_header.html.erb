@@ -18,6 +18,13 @@
           <li>
             <%#= render 'notifications/notification_dropdown' %>
           </li>
+          <li class="search-form">
+            <div class="ui-widget">
+              <input id="tags" placeholder="Enter any letter for search user">
+              <input id="link_origin_id" name="link[origin_id]" type="hidden"/>
+              <ul class="noresult"></ul>
+            </div>
+          </li>
           <li>
             <%= link_to new_food_path, class: "abcd", title: "New post" do %>
               <i class="fa fa-upload fa-5" aria-hidden="true"></i>
@@ -42,3 +49,33 @@
     </div>
   </div>
 </nav>
+
+<script>
+  $( function() {
+    $( "#tags" ).autocomplete({
+      source: '<%= foods_path(:json) %>',
+      response: function(event, ui) {
+        console.log(ui);
+        if (ui.content.length === 0) {
+            $(".noresult").html("<li class='noresult'>No results found</li>");
+            $(".noresult").css("display", "block");
+        } else {
+            $(".noresult").empty();
+        }
+      },
+      select: function(event, ui) {
+          $('#tags').val(ui.item.email);
+          $('#link_origin_id').val(ui.item.id);
+                  return false;
+              }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      console.log(item)
+      var a = "users/"+item.id
+      return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append( '<img class="img-ava-mini" src="' + item.avatar.url + '" /><a href='+"users/"+item.id+'>' + item.email + '</a>' )
+        .appendTo( ul );
+    };
+  });
+</script>

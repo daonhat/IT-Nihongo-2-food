@@ -1,0 +1,3 @@
+<div id="like_form" class="dn-like-form">
+  <%= render current_user.liking?(food) ? "unlike" : "like", food: food %>
+</div>

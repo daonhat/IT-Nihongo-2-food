@@ -5,7 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = User.from_omniauth request.env["omniauth.auth"]
       if @user.persisted?
         flash[:notice] = t "devise.omniauth_callbacks.success",
-          kind: "Github"
+          kind: provider
         sign_in_and_redirect @user, event: :authentication
       else
         flash[:warning] = "Please certain your email is public"

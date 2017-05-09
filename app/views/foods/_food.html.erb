@@ -31,7 +31,9 @@
     </div>
 
     <div class="post-bottom">
-      <%#= render 'posts/likes', post: post %>
+      <div id="form-for-like-<%= food.id%>">
+        <%= render "like_form", food: food if user_signed_in? %>
+      </div>
       <div class="caption">
         <div class="caption-content">
           <ul>

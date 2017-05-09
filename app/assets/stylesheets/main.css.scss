@@ -111,6 +111,7 @@ body {
     }
   }
   margin-bottom: 0px;
+  margin-top: 10px;
   padding-left: 24px;
   padding-right: 24px;
   padding-bottom: 0px;
@@ -748,4 +749,71 @@ body {
   ul li{
     list-style: none;
   }
+}
+
+.ui-autocomplete{
+  max-width: 300px;
+  margin-top: 55px;
+  position: relative;
+  background: #fff;
+  font-size: 13.5px;
+  padding: 6.75px 0;
+  border-color: #fff;
+  box-shadow: 0 0.1em 0.2em rgba(187,187,187,0.64);
+  line-height: 1.2;
+  max-height: 270px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.ui-autocomplete::before{
+  content: "";
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  background-color: #fff;
+  top: -8px;
+  left: 28%;
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.ui-autocomplete a:hover{
+  text-decoration: none;
+}
+
+
+.search-form{
+  margin-right: 210px;
+  margin-top: 9px;
+  min-width: 250px;
+}
+
+#tags{
+  width: 98%;
+  max-width: 30em;
+  font-size: 1em;
+  padding: 5.5px 19.5px;
+  background: #fff;
+  border: solid 1px #dbdbdb;
+  border-radius: 2em;
+  box-shadow: 0 0 5px rgba(13, 7, 8, 0.12);
+}
+
+#tags:focus{
+  outline: none;
+}
+
+.post-bottom a:hover{
+  text-decoration: none!important;
+}
+
+.glyphicon-heart, glyphicon-heart-empty{
+  font-size: 20px!important;
+}
+
+.glyphicon-heart:hover{
+  color: red!important;
 }

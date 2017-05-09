@@ -25,4 +25,17 @@ module ApplicationHelper
   def trim_string(string, length = 50, separator = '...')
     truncate( string, :length => length, :separator => separator)
   end
+
+  def list_likers food
+    user_names = []
+    food.likes.each do |like|
+      user_names.push(link_to like.user.name.present? ? like.user.name : like.user.email, user_path(like.user))
+      # user_names += trim_string(like.user.email, 15)+', '
+    end
+    if food.likes.count <= 2
+      user_names.to_sentence.html_safe
+    else
+      food.likes.count
+    end
+  end
 end
