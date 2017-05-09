@@ -17,7 +17,6 @@
 //= require reg
 //= require fileinput
 //= require jquery.swipebox.min
-//= require turbolinks
 //= require_tree .
 
 $(document).on('click', '.glyphicon-pencil', function(event) {

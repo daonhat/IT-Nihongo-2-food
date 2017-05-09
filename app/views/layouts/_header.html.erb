@@ -49,7 +49,6 @@
     </div>
   </div>
 </nav>
-
 <script>
   $( function() {
     $( "#tags" ).autocomplete({
@@ -74,7 +73,7 @@
       var a = "users/"+item.id
       return $( "<li></li>" )
         .data( "item.autocomplete", item )
-        .append( '<img class="img-ava-mini" src="' + item.avatar.url + '" /><a href='+"users/"+item.id+'>' + item.email + '</a>' )
+        .append( '<img class="img-ava-mini" src="' + item.avatar.url + '" /><a href='+"<%= root_url %>"+"users/"+item.id+'>' + item.email + '</a>' )
         .appendTo( ul );
     };
   });
