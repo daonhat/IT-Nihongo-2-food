@@ -35,7 +35,9 @@ module ApplicationHelper
     if food.likes.count <= 2
       user_names.to_sentence.html_safe
     else
-      food.likes.count
+      link_to "#", data: {toggle: "modal", target: "#listLikers#{food.id}"} do
+        "<strong>#{food.likes.count}</strong>".html_safe
+      end
     end
   end
 end
