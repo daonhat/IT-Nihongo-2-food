@@ -1,6 +1,15 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
 
+  def index
+    @food = Food.find_by id: params[:food_id]
+    @comments = @food.comments.order('created_at asc')
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+  end
+
   def create
    @comment = current_user.comments.build comment_params
    @food = Food.find @comment.food_id

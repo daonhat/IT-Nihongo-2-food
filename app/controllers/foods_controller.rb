@@ -7,7 +7,7 @@ class FoodsController < ApplicationController
     # @foods = Food.all.order('created_at DESC').page params[:page]
 
     @foods = Food.feed(current_user.following_ids, current_user.id)
-      .order_by_time
+      .order_by_time.paginate(:page => params[:page], :per_page => 3)
     if params[:term]
       @users = User.search(params[:term])
     else
@@ -15,8 +15,9 @@ class FoodsController < ApplicationController
     end
     @user_email = @users.map(&:email)
     respond_to do |format|
-    format.html
-    format.json { render :json => @users.to_json }
+      format.html
+      format.json { render :json => @users.to_json }
+      format.js
     end
   end
 

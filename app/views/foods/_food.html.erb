@@ -45,8 +45,14 @@
       </div>
 
       <div id="comments-of-phone-<%= food.id %>" class="comments-list">
-        <%= render food.comments if food.comments.any? %>
-        <%#= paginate @comments, theme: "twitter-bootstrap-3" %>
+        <% if food.comments.any? %>
+          <%= render food.comments.first(4) %>
+          <% unless food.comments.count <= 4 %>
+            <div class="paginator" id="#comments-paginator-<%= food.id %>">
+              <%= link_to "view all #{food.comments.count} comments", comments_path(food_id: food.id), remote: true, class: 'more-comments', id: "more_comments_#{food.id}" %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
 
       <% if user_signed_in? %>
