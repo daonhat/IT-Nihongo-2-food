@@ -32,14 +32,17 @@
         <ul>
           <% @user.following.each do |user| %>
             <li>
-              <div><%= user.name.nil? ? user.email : user.name%></div>
+              <div>
+                <%= link_to image_tag(user.avatar_url, class: "img-ava-mini"), user_path(user) %>
+                <%= link_to user.name.present? ? user.name : user.email, user_path(user) %>
+                <span class="show-follow-form modal-show-follow"><%= render "users/follow_form", user: user %></span>
+              </div>
             </li>
           <% end %>
         </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -57,14 +60,17 @@
         <ul>
           <% @user.followers.each do |user| %>
             <li>
-              <div><%= user.name.nil? ? user.email : user.name%></div>
+              <div>
+                <%= link_to image_tag(user.avatar_url, class: "img-ava-mini"), user_path(user) %>
+                <%= link_to user.name.present? ? user.name : user.email, user_path(user) %>
+                <span class="show-follow-form modal-show-follow"><%= render "users/follow_form", user: user %></span>
+              </div>
             </li>
           <% end %>
         </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

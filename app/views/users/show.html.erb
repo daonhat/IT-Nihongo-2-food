@@ -18,7 +18,7 @@
           <% end %>
         </span>
 
-        <span class="show-follow-form"><%= render "follow_form" if user_signed_in? %></span>
+        <span class="show-follow-form"><%= render "follow_form", user: @user %></span>
 
         <span><%= render 'shared/stats' %></span>
       </div>

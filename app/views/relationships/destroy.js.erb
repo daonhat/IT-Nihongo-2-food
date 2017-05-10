@@ -1,5 +1,5 @@
 <% if @relationship %>
-  $("#follow_form").html("<%= j render "users/follow" %>");
+  $("#follow_form_<%= @user.id %>").html("<%= j render "users/follow", user: @user %>");
   $("#followers").html("<%= @user.followers.count %>");
 <% else %>
   alert("No UnFollowed, Plese reload page!!");

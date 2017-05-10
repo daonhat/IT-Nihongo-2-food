@@ -77,14 +77,16 @@
         <ul>
           <% food.likes.each do |like| %>
               <li>
-                <div><%= like.user.name.nil? ? like.user.email : like.user.name%></div>
+                <div>
+                  <%= link_to image_tag(like.user.avatar_url, class: "img-ava-mini"), user_path(like.user) %>
+                  <%= link_to like.user.name.present? ? like.user.name : like.user.email, user_path(like.user) %>
+                </div>
               </li>
           <% end %>
         </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

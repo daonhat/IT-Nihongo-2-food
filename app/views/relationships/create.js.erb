@@ -1,6 +1,6 @@
 <% if @result %>
   alert("Followed, Plese reload page!!");
 <% else %>
-  $("#follow_form").html("<%= j render "users/unfollow" %>");
+  $("#follow_form_<%= @user.id %>").html("<%= j render "users/unfollow", user: @user %>");
   $("#followers").html("<%= @user.followers.count %>");
 <% end %>
