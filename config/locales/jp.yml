@@ -76,12 +76,12 @@ jp:
       update: 'エディット %{model}'
       submit: 'セーブ %{model}'
   search: "検索ユーザー"
-  email: "Eメール"
+  email: "メール"
   password: "パスワード"
   remember: "パスワード保存 "
   login: "ログイン"
   create_an_account: "アカウントを作成"
-  sign_in_with: "Đăng nhập với"
+  sign_in_with: "ログインと"
   password_confirmation: "バスワードを確認"
   register: "サインアップ"
   Already_account: "アカウントがあった？ここでログイン"
