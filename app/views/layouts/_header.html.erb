@@ -84,7 +84,7 @@
     .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
       console.log(item)
       var a = "users/"+item.id
-      return $( '<a class="auto-li" href='+"<%= root_url %>"+"users/"+item.id+'></a>' )
+      return $( '<a class="auto-li" href='+"<%= root_url %>"+"/users/"+item.id+'></a>' )
         .data( "item.autocomplete", item )
         .append( '<img class="img-ava-mini" src="' + item.avatar.url + '" /><span>' + item.email.trim() + '</span>' )
         .appendTo( ul );

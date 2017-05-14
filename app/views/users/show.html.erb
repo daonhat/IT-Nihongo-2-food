@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6">
       <div class="user-name-and-follow">
-        <h3 class="profile-user-name">
+        <h3 class="profile-user-name" title="<%= @user.name.present? ? @user.name : @user.email %>">
           <%= @user.name.present? ? trim_string(@user.name,10,'...') : trim_string(@user.email, 10, '...') %>
         </h3>
         <span>
