@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
     root "foods#index"
+    get 'omniauth/:provider' => 'omniauth#localized', as: :localized_omniauth
     devise_for :users, skip: :omniauth_callbacks
 
     resources :foods

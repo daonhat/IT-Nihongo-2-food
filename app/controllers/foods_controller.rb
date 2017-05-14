@@ -13,7 +13,9 @@ class FoodsController < ApplicationController
     else
       @users = User.all
     end
-    @users_suggest = User.where('id NOT IN (:ids)', ids: current_user.following.map(&:id)).where.not(id: current_user.id).order("RANDOM()").limit(3)
+    ids = current_user.following.map(&:id)
+    ids << current_user.id if ids.blank?
+    @users_suggest = User.where('id NOT IN (:ids)', ids: ids).where.not(id: current_user.id).order("RANDOM()").limit(3)
     @user_email = @users.map(&:email)
     respond_to do |format|
       format.html
