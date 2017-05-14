@@ -1,3 +1,3 @@
 <%= link_to '', Like.find_by(user: current_user, food: food), method: :delete,
   remote: true, id: "like_#{food.id}", class: "like glyphicon glyphicon-heart" %>
-<%= list_likers food %> likes this post
+<%= list_likers food %> <%= t "likes_this_post" %>

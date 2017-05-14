@@ -14,7 +14,7 @@
         </h3>
         <span>
           <% if @user == current_user %>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn edit-button' %>
+            <%= link_to t("edit_profile"), edit_user_path(@user), class: 'btn edit-button' %>
           <% end %>
         </span>
 
@@ -31,18 +31,13 @@
   </div>
 </div>
 
-<%# @foods.each do |food| %>
-  <%#= render 'foods/food', food: food %>
-<%# end %>
-
-
 <div class="posts-wrapper1">
   <div class="tab_img">
     <% @foods.each do |food|%>
       <div class="col-md-4 portfolio-grids">
         <div class="grid">
           <%= link_to food.picture_url, class: "swipebox",
-            title: "#{link_to "Go to detail image", food_path(food), class: "img-responsive"}" do %>
+            title: "#{link_to t(:go_to_detail_image), food_path(food), class: "img-responsive"}" do %>
             <%= image_tag food.picture_url, class: "img-responsive" %>
             <div class="figcaption">
               <h3><%= trim_string(food.name, 15, '...') %></h3>

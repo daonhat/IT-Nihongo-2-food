@@ -8,7 +8,7 @@
       </button>
       <div class="navbar-brand">
         <%= link_to root_path, title: "FoodStagram" do %>
-          <i class="fa fa-picture-o fa-5" aria-hidden="true"></i><strong>  美味しい</strong>
+          <i class="fa fa-picture-o fa-5" aria-hidden="true"></i><strong><%= t "delicious"%></strong>
         <% end %>
       </div>
     </div>
@@ -20,23 +20,36 @@
           </li>
           <li class="search-form">
             <div class="ui-widget">
-              <input id="tags" placeholder="Enter any letter for search user">
+              <input id="tags" placeholder="<%= t :search %>" >
               <input id="link_origin_id" name="link[origin_id]" type="hidden"/>
               <ul class="noresult"></ul>
             </div>
           </li>
           <li>
-            <%= link_to new_food_path, class: "abcd", title: "New post" do %>
+            <div class="language pull-right">
+                <%= link_to  url_for(locale: "en"), title: t("eng") do %>
+                  <img src="http://rikkeisoft.com/wp-content/themes/rikkei/images/common/gb.svg">
+                <% end %>
+                <%= link_to url_for(locale: "jp"), title: t("jap") do %>
+                  <img src="http://en.rikkeisoft.com/wp-content/uploads/2016/03/japan-flag-150x145.png">
+                <% end %>
+                <%= link_to url_for(locale: "vi"), title: t("vie") do %>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg">
+                <% end %>
+            </div>
+          </li>
+          <li>
+            <%= link_to new_food_path, class: "abcd", title: t("new_post") do %>
               <i class="fa fa-upload fa-5" aria-hidden="true"></i>
             <% end %>
           </li>
           <li>
-            <%= link_to user_path(current_user), class: "abcd", title: "Profile" do %>
+            <%= link_to user_path(current_user), class: "abcd", title:t("profile") do %>
               <i class="fa fa-user fa-5" aria-hidden="true"></i>
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete, class: "abcd", title: "Log out" do %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "abcd", title: t("log_out") do %>
               <i class="fa fa-sign-out fa-5" aria-hidden="true"></i>
             <% end %>
           </li>
@@ -52,7 +65,7 @@
 <script>
   $( function() {
     $( "#tags" ).autocomplete({
-      source: '<%= foods_path(:json) %>',
+      source: '<%= foods_path(format: :json) %>',
       response: function(event, ui) {
         console.log(ui);
         if (ui.content.length === 0) {

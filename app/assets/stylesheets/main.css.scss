@@ -60,7 +60,7 @@ body {
   border-style: solid;
   border-radius: 3px;
   border-width: 1px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   .post-head {
     flex-direction: row;
     height: 64px;
@@ -797,7 +797,7 @@ body {
 
 
 .search-form{
-  margin-right: 210px;
+  margin-right: 110px;
   margin-top: 9px;
   min-width: 250px;
 }
@@ -856,4 +856,23 @@ body {
   list-style: none;
   border-bottom: solid 1px #efefef;
   padding: 8px 16px;
+}
+
+.language a{
+    margin-left: 5px
+}
+
+.language img{
+    width: 22px;
+    height: 20px;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+li .language {
+  margin-top: 15px;
+}
+
+.pagination a, .current{
+  display: none;
 }

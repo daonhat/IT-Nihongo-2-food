@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       if params[:user][:status_img] == '1' && params[:user][:avatar].nil?
         @user.update_attributes avatar: nil
       end
-      flash[:success] = 'Your profile has been updated.'
+      flash[:success] = t "profile_update_success"
       redirect_to @user
     else
       @user.errors.full_messages
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
     def owned_profile
       unless current_user == @user
-        flash[:alert] = "That profile doesn't belong to you!"
+        flash[:alert] = t "profile_doesnt_belong"
         redirect_to root_path
       end
     end

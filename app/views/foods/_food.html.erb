@@ -3,7 +3,7 @@
     <div class="post-head">
       <div class="thumb-img"></div>
       <div class="user-name">
-        <%= link_to food.user.name.present? ? food.user.name : food.user.email, user_path(food.user) %>
+        <%= link_to food.user.name.present? ? food.user.name.capitalize : food.user.email.capitalize, user_path(food.user) %>
       </div>
 
       <% if current_user? food.user %>
@@ -13,9 +13,9 @@
 
           <div class="content-action content-action-<%= food.id %>">
             <ul>
-              <li><%= link_to "Edit...", edit_food_path(food) %></li>
-              <li><%= link_to "Delete...", food, method: :delete,
-                data: {confirm: "Are you sure?"} %></li>
+              <li><%= link_to t( "edit"), edit_food_path(food) %></li>
+              <li><%= link_to t( "delete"), food, method: :delete,
+                data: {confirm: t( "are_you_sure")} %></li>
             </ul>
           </div>
         </div>
@@ -37,9 +37,9 @@
       <div class="caption">
         <div class="caption-content">
           <ul>
-            <%= "<li><b>Name</b>: #{food.name} </li>".html_safe if food.name.present? %>
-            <%= "<li><b>Address</b>: #{food.address} </li>".html_safe if food.address.present? %>
-            <%= "<li><b>Caption</b>: #{food.caption} </li>".html_safe if food.caption.present? %>
+            <%= "<li><b>#{t :name}</b>: #{food.name} </li>".html_safe if food.name.present? %>
+            <%= "<li><b>#{t :address}</b>: #{food.address} </li>".html_safe if food.address.present? %>
+            <%= "<li><b>#{t :caption}</b>: #{food.caption} </li>".html_safe if food.caption.present? %>
           </ul>
 
       </div>
@@ -49,7 +49,7 @@
           <%= render food.comments.first(4) %>
           <% unless food.comments.count <= 4 %>
             <div class="paginator" id="#comments-paginator-<%= food.id %>">
-              <%= link_to "view all #{food.comments.count} comments", comments_path(food_id: food.id), remote: true, class: 'more-comments', id: "more_comments_#{food.id}" %>
+              <%= link_to "#{t :view_all} #{food.comments.count} #{t :cmts}", comments_path(food_id: food.id), remote: true, class: 'more-comments', id: "more_comments_#{food.id}" %>
             </div>
           <% end %>
         <% end %>
@@ -71,7 +71,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">List Likers</h4>
+        <h4 class="modal-title" id="myModalLabel"><%= t "list_likers"%></h4>
       </div>
       <div class="modal-body">
         <ul>
@@ -79,14 +79,14 @@
               <li>
                 <div>
                   <%= link_to image_tag(like.user.avatar_url, class: "img-ava-mini"), user_path(like.user) %>
-                  <%= link_to like.user.name.present? ? like.user.name : like.user.email, user_path(like.user) %>
+                  <%= link_to like.user.name.present? ? like.user.name.capitalize : like.user.email.capitalize, user_path(like.user) %>
                 </div>
               </li>
           <% end %>
         </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "close"%></button>
       </div>
     </div>
   </div>

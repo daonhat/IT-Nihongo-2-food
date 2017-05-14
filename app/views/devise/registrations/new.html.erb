@@ -1,3 +1,15 @@
+<div class="language pull-right">
+    <%= link_to  url_for(locale: "en"), title: t("eng") do %>
+      <img src="http://rikkeisoft.com/wp-content/themes/rikkei/images/common/gb.svg">
+    <% end %>
+    <%= link_to url_for(locale: "jp"), title: t("jap") do %>
+      <img src="http://en.rikkeisoft.com/wp-content/uploads/2016/03/japan-flag-150x145.png">
+    <% end %>
+    <%= link_to url_for(locale: "vi"), title: t("vie") do %>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg">
+    <% end %>
+</div>
+<div class="clearfix"></div>
 <%= form_for resource, as: resource_name,
   url: registration_path(resource), html: {class: "form-register" } do |f| %>
 
@@ -5,12 +17,12 @@
       <div class="form-white-background">
 
           <div class="form-title-row">
-              <h1>Create an account</h1>
+              <h1><%= t "create_an_account"%></h1>
           </div>
 
           <div class="form-row ">
               <label class="">
-                  <span>Email</span>
+                  <span><%= t "email"%></span>
                   <%= f.email_field :email, autofocus: true, required: true %>
                   <%= genError @user, :email %>
               </label>
@@ -18,7 +30,7 @@
 
           <div class="form-row">
               <label>
-                  <span>Password</span>
+                  <span><%= t "password"%></span>
                   <%= f.password_field :password, autocomplete: "off", required: true %>
                   <%= genError @user, :password %>
               </label>
@@ -26,26 +38,26 @@
 
           <div class="form-row">
               <label>
-                  <span>Password confirmation</span>
+                  <span><%= t "password_confirmation"%></span>
                   <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
                   <%= genError @user, :password_confirmation %>
               </label>
           </div>
 
           <div class="form-row">
-              <button type="submit">Register</button>
+              <button type="submit"><%= t "register"%></button>
           </div>
 
       </div>
 
-      <a href="sign_in" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+      <a href="sign_in" class="form-log-in-with-existing"><%= t "Already_account" %></a>
 
   </div>
 
   <div class="form-sign-in-with-social">
 
       <div class="form-row form-title-row">
-          <span class="form-title">Sign in with</span>
+          <span class="form-title"><%= t "sign_in_with"%></span>
       </div>
 
       <%= link_to user_facebook_omniauth_authorize_path, class: "form-facebook-button" do %>

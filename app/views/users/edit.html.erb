@@ -1,10 +1,10 @@
 <div class="main-update">
   <ul class="sidebar-update">
     <li>
-      <%= link_to 'Chỉnh sửa trang cá nhân', edit_user_path(@user), class: 'active' %>
+      <%= link_to t("edit_profile"), edit_user_path(@user), class: 'active' %>
     </li>
     <li>
-      <a class="inactive" href="/users/edit">Đổi mật khẩu</a>
+      <%= link_to t("change_password"), edit_user_registration_path, class: "inactive" %>
     </li>
   </ul>
 
@@ -12,7 +12,7 @@
     <%= form_for @user do |f| %>
     <div class="person-info row">
       <div class="col-md-3">
-      <%= f.label :avatar %>
+      <%= f.label t(:avatar) %>
       </div>
       <div class="col-md-9">
         <%= image_tag @user.avatar_url, class: "update-avatar hidden" if @user.avatar? %>
@@ -25,12 +25,12 @@
     </div>
 
     <div class="person-info row">
-      <div class="col-md-3"><%= f.label :email %></div>
+      <div class="col-md-3"><%= f.label t(:email) %></div>
       <div class="col-md-9"><%= f.email_field :email, class: "form-control", disabled: true %></div>
     </div>
 
     <div class="person-info row">
-      <div class="col-md-3"><%= f.label :name %></div>
+      <div class="col-md-3"><%= f.label t(:name) %></div>
       <div class="col-md-9">
         <%= f.text_field :name, class: "form-control" %>
         <%= genError @user, :name %>
@@ -38,17 +38,17 @@
     </div>
 
     <div class="person-info row">
-      <div class="col-md-3"><%= f.label :date_of_birth %></div>
+      <div class="col-md-3"><%= f.label t(:dob) %></div>
       <div class="col-md-9"><%= f.date_field :dob, class: "form-control" %></div>
     </div>
 
     <div class="person-info row">
-      <div class="col-md-3"><%= f.label :phone_number %></div>
+      <div class="col-md-3"><%= f.label t(:phone_number) %></div>
       <div class="col-md-9"><%= f.number_field :phonenumber, class: "form-control"  %></div>
     </div>
 
     <div class="person-info row">
-      <div class="col-md-3"><%= f.label :gender %></div>
+      <div class="col-md-3"><%= f.label t(:gender) %></div>
       <div class="col-md-9"><%= f.select :gender, User.genders.keys, {}, class: "form-control" %></div>
     </div>
 

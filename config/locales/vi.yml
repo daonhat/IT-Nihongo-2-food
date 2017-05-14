@@ -1,0 +1,136 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+vi:
+  hello: "Hello world"
+  datetime:
+    distance_in_words:
+      half_a_minute: "Nửa phút"
+      less_than_x_seconds:
+        one:   "Ít hơn 1 giây"
+        other: "Ít hơn %{count} giây"
+      x_seconds:
+        one:   "1 giây"
+        other: "%{count} giây"
+      less_than_x_minutes:
+        one:   "ít hơn một phút"
+        other: "ít hơn %{count} phút"
+      x_minutes:
+        one:   "1 phút"
+        other: "%{count} phút"
+      about_x_hours:
+        one:   "Khoảng 1 giờ"
+        other: "Khoảng %{count} giờ"
+      x_days:
+        one:   "1 Ngày"
+        other: "%{count} Ngày"
+      about_x_months:
+        one:   "Khoảng 1 tháng"
+        other: "Khoảng %{count} tháng"
+      x_months:
+        one:   "1 tháng"
+        other: "%{count} tháng"
+      about_x_years:
+        one:   "Khoảng 1 năm"
+        other: "Khoảng %{count} năm"
+      over_x_years:
+        one:   "Trên 1 năm"
+        other: "Trên %{count} năm"
+      almost_x_years:
+        one:   "Gần 1 năm"
+        other: "Gần %{count} năm"
+    prompts:
+      year:   "Năm"
+      month:  "Tháng"
+      day:    "Ngày"
+      hour:   "Giờ"
+      minute: "phút"
+      second: "giây"
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Vui lòng chọn"
+
+    # Default translation keys for submit and button FormHelper
+    submit:
+      create: 'Tạo %{model}'
+      update: 'Sửa %{model}'
+      submit: 'Lưu %{model}'
+  search: "Tìm kiếm người dùng "
+  email: "Email"
+  password: "Mật khẩu"
+  remember: "Ghi nhớ mật khẩu "
+  login: "Đăng nhập"
+  create_an_account: "Tạo một tài khoản"
+  sign_in_with: "Đăng nhập với"
+  password_confirmation: "Nhập lại mật khẩu"
+  register: "Đăng ký"
+  Already_account: "Bạn có sẵn tài khoản? đăng nhập tại đây"
+  list_suggest: "ĐỀ XUẤT DÀNH CHO BẠN"
+  edit: "Sửa..."
+  delete: "Xóa..."
+  are_you_sure: "Bạn chắc chắn chưa?"
+  likes_this_post: "thích bài đăng này"
+  name: "Tên món ăn"
+  address: "Địa chỉ"
+  caption: "Chú thích"
+  view_all: "Xem tất cả"
+  cmts: "bình luận"
+  list_likers: "Danh sách người thích bài đăng"
+  close: "Đóng lại"
+  add_comment: "Thêm bình luận…"
+  upload_your_food: "Tải lên món ăn"
+  edit_food: "Chỉnh sửa"
+  name_of_food: "Tên món ăn"
+  picture: "Hình ảnh"
+  address_of_food: "Địa chỉ món ăn..."
+  caption_of_food: "Chú thích món ăn..."
+  update: "Thay đổi"
+  upload: "Tải lên"
+  food_create_success: "Món ăn được tải lên thành công."
+  food_update_success: "Món ăn được chỉnh sửa thành công."
+  food_destroy_success: "Món ăn được xóa thành công."
+  edit_profile: "Chỉnh sửa hồ sơ"
+  follow: "Theo dõi"
+  unfollow: "Hủy theo dõi"
+  posts: "bài đăng"
+  following: "đang theo dõi"
+  followers: "người theo dõi"
+  list_following: "Danh sách đang theo dõi"
+  list_followers: "Danh sách người theo dõi"
+  go_to_detail_image: "Đi đến trang chi tiết"
+  change_password: "Thay đổi mật khẩu"
+  avatar: "Ảnh đại diện"
+  name: "Tên"
+  dob: "Ngày sinh nhật"
+  phone_number: "Số điện thoại"
+  gender: "Giới tính"
+  current_password: "Mật khẩu hiện tại"
+  delicious: "Món ăn ngon"
+  new_post: "Bài đăng mới"
+  profile: "Hồ sơ"
+  log_out: "Đăng xuất"
+  eng: "Tiếng Anh"
+  jap: "Tiếng Nhật"
+  vie: "Tiếng Việt"
+  profile_update_success: "Hồ sơ của bạn đã được cập nhật."
+  profile_doesnt_belong: "Hồ sơ đó không thuộc về bạn!"

@@ -1,3 +1,15 @@
+<div class="language pull-right">
+    <%= link_to  url_for(locale: "en"), title: t("eng") do %>
+      <img src="http://rikkeisoft.com/wp-content/themes/rikkei/images/common/gb.svg">
+    <% end %>
+    <%= link_to url_for(locale: "jp"), title: t("jap") do %>
+      <img src="http://en.rikkeisoft.com/wp-content/uploads/2016/03/japan-flag-150x145.png">
+    <% end %>
+    <%= link_to url_for(locale: "vi"), title: t("vie") do %>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg">
+    <% end %>
+</div>
+<div class="clearfix"></div>
 <%= form_for resource, as: resource_name,
   url: session_path(resource_name), html: {class: "form-login"} do |f| %>
 
@@ -6,20 +18,20 @@
       <div class="form-white-background">
 
         <div class="form-title-row">
-          <h1>Log in</h1>
+          <h1><%= t "login"%></h1>
         </div>
         <% flash.each do |message_type, message| %>
             <div class="alert alert-<%= message_type %> login-mes-err"><%= message %></div>
           <% end %>
         <div class="form-row">
           <label>
-            <span>Email</span>
+            <span><%= t "email"%></span>
             <%= f.email_field :email, autofocus: true, required: true %>
           </label>
         </div>
         <div class="form-row">
           <label>
-            <span>Password</span>
+            <span><%= t "password"%></span>
               <%= f.password_field :password, autocomplete: "off", required: true %>
           </label>
         </div>
@@ -27,17 +39,17 @@
         <div class="form-row">
           <label class="form-checkbox">
             <%= f.check_box :remember_me %>
-            <span class="remember"><b>Remember me</span>
+            <span class="remember"><b><%= t "remember"%></span>
           </label>
         </div>
 
         <div class="form-row">
-          <button type="submit">Log in</button>
+          <button type="submit"><%= t "login"%></button>
         </div>
 
       </div>
 
-        <%= link_to "Create an account", new_registration_path(resource_name),
+        <%= link_to t("create_an_account"), new_registration_path(resource_name),
           class: "form-create-an-account" %>
 
     </div>
@@ -45,7 +57,7 @@
     <div class="form-sign-in-with-social">
 
       <div class="form-row form-title-row">
-        <span class="form-title">Sign in with</span>
+        <span class="form-title"><%= t "sign_in_with"%></span>
       </div>
       <%= link_to user_facebook_omniauth_authorize_path, class: "form-facebook-button" do %>
         <i class="fa fa-facebook-official" aria-hidden="true"></i>

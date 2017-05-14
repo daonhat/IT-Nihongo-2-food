@@ -5,27 +5,27 @@
         <%= form_for(food) do |f| %>
           <div class="container-fluid">
             <% if food.persisted? %>
-              <h3>Edit <%= food.name %></h3>
+              <h3><%= t :edit_food %> <%= food.name %></h3>
             <% else %>
-              <h3>Upload your image:</h3>
+              <h3><%= t "upload_your_food"%></h3>
             <% end %>
             <div class="form-group">
-              <%= f.label :name_of_food %>
+              <%= f.label t(:name_of_food) %>
               <%= f.text_field :name, class: "form-control form-food",
-                placeholder: "Name of Food ..." %>
+                placeholder: t(:name_of_food) %>
               <%= genError food, :name %>
             </div>
             <div class="form-group">
-              <%= f.label :address %>
+              <%= f.label t(:address) %>
               <%= f.text_field :address, class: "form-control form-food",
-                placeholder: "Address of Food ..." %>
+                placeholder: t(:address_of_food) %>
               <%= genError food, :address %>
             </div>
 
             <div class="form-group">
-              <%= f.label :caption %>
+              <%= f.label t(:caption) %>
               <%= f.text_area :caption, class: "form-control form-food",
-                placeholder: "Caption ..." %>
+                placeholder: t(:caption_of_food) %>
               <%= genError food, :caption %>
             </div>
             <div class="form-group">
@@ -33,7 +33,7 @@
                 class: "hidden picture-of-food", data: {filename: food.picture.file.identifier,
                 size: food.picture.size} if food.persisted? %>
 
-              <%= f.label :picture %>
+              <%= f.label t(:picture) %>
               <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png",
                 class: "form-control" %>
 
@@ -43,9 +43,9 @@
             </div>
             <div class="form-group">
               <% if food.persisted? %>
-                <%= f.button :Update, class: 'btn btn-primary' %>
+                <%= f.button t(:update), class: 'btn btn-primary' %>
               <% else %>
-                <%= f.button :Upload, class: 'btn btn-primary' %>
+                <%= f.button t(:upload), class: 'btn btn-primary' %>
               <% end %>
             </div>
           </div>
